@@ -1,0 +1,14 @@
+<article class="product-item">
+  <img src="<%= product.imageUrl %>" alt="<%= product.title %>" />
+  <div class="product-item-content">
+    <h2><%= product.title %></h2>
+    <div class="product-item-actions">
+      <% if (locals.isAdmin) { %>
+        <a class="btn btn-alt" href="/admin/products/<%= product.id %>">편집</a>
+        <button class="btn btn-alt" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">지우기</button>
+      <% } else { %>
+        <a class="btn btn-alt" href="/products/<%= product.id %>">자세히</a>
+      <% } %>
+    </div>
+  </div>
+</article>

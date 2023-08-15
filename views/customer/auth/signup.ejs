@@ -1,0 +1,57 @@
+<%- include('../../shared/includes/head', { pageTitle: '회원가입' }) %>
+  <link rel="stylesheet" href="/styles/forms.css">
+  <link rel="stylesheet" href="/styles/auth.css">
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <h1>새로운 계정 만들기</h1>
+    <% if (inputData.errorMessage) { %>
+      <section class="alert">
+        <h2>값을 다시 넣어주세요!</h2>
+        <p><%= inputData.errorMessage %></p>
+      </section>
+    <% } %>
+    <form action="/signup" method="POST">
+      <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+      <p>
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" value="<%= inputData.email %>" required>
+      </p>
+      <p>
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" minlength="6" value="<%= inputData.password %>" required>
+      </p>
+      <p>
+        <label for="confirm-password">비밀번호 확인</label>
+        <input type="password" id="confirm-password" name="confirm-password" minlength="6" value="<%= inputData.confirmPassword %>" required>
+      </p>
+      <hr>
+      <p>
+        <label for="fullname">이름</label>
+        <input type="text" id="fullname" name="fullname" value="<%= inputData.fullname %>" required>
+      </p>
+      <p>
+        <label for="postal">우편번호</label>
+        <input 
+          type="text" 
+          id="postal" 
+          name="postal" 
+          minlength="5" 
+          maxlength="5" 
+          value="<%= inputData.postal %>"
+          required>
+      </p>
+      <p>
+        <label for="local">주소</label>
+        <input type="text" id="local" name="local" value="<%= inputData.local %>" required>
+      </p>
+      <p>
+        <label for="phone">전화번호</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" value="<%= inputData.phone %>" required>
+      </p>
+      <button class="btn">계정 만들기</button>
+      <p id="switch-form"><a href="/login">계정이 이미 있습니다</a></p>
+    </form>
+  </main>
+<%- include('../../shared/includes/footer') %>

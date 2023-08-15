@@ -1,0 +1,141 @@
+main {
+  margin-top: 8rem; /* 더 큰 마진으로 조절 */
+}
+
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 60rem;
+  height: 6rem; /* 높이 조절 */
+  margin: 0 auto;
+  padding: 0 var(--space-6); /* 패딩을 조금 줄임 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-primary-500);
+  background-color: var(--color-gray-50);
+}
+
+#logo a {
+  font-weight: bold;
+  font-size: 2.25rem; /* 폰트 크기를 조금 줄임 */
+  color: var(--color-gray-600);
+}
+
+#main-header nav {
+  display: none;
+}
+
+.nav-items {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-items li {
+  margin: 0 var(--space-3); /* 마진 조절 */
+}
+
+.nav-items button {
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.2rem; /* 폰트 크기 조절 */
+  border: 1px solid var(--color-primary-100);
+  border-radius: var(--border-radius-medium); /* 조금 더 큰 radius */
+  background-color: transparent;
+  color: var(--color-gray-600);
+  padding: var(--space-1) var(--space-2); /* 패딩 크기를 조금 줄임 */
+}
+
+#mobile-menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: none;
+  cursor: pointer;
+  width: 3rem; /* 크기 조절 */
+  height: 3rem; /* 크기 조절 */
+  background-color: transparent;
+  padding: 0;
+  margin-top: 1.5rem; /* 상단 마진 추가 */
+}
+
+#mobile-menu-btn span {
+  width: 3rem; /* 크기 조절 */
+  height: 0.3rem; /* 두께 조절 */
+  background-color: var(--color-gray-600);
+}
+
+#mobile-menu {
+  position: fixed;
+  top: 7rem; /* 위치를 조금 아래로 조절 */
+  left: 0;
+  height: calc(100vh - 6rem); /* 높이 조절 */
+  width: 100%;
+  background-color: var(--color-gray-50);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mobile-menu.open {
+  display: flex;
+}
+
+#mobile-menu nav {
+  height: 22rem; /* 높이 조절 */
+  width: 90%;
+  margin: var(--space-4) auto; /* 마진을 조금 줄임 */
+}
+
+#mobile-menu .nav-items a,
+#mobile-menu .nav-items button {
+  font-size: 2rem; /* 폰트 크기 조절 */
+  color: var(--color-gray-600);
+}
+
+@media (min-width: 48rem) {
+  main {
+    margin-top: 2rem; /* 조금 큰 마진으로 조절 */
+  }
+
+  #main-header {
+    position: static;
+  }
+
+  #main-header nav {
+    display: block;
+  }
+
+  .nav-items button {
+    color: var(--color-primary-500);
+    border-color: var(--color-primary-500);
+  }
+
+  #mobile-menu-btn {
+    display: none;
+  }
+
+  #mobile-menu {
+    display: none;
+  }
+
+  .nav-items {
+    flex-direction: row;
+  }
+
+  .nav-items a {
+    padding: var(--space-2) var(--space-4); /* 패딩 크기를 조금 줄임 */
+    border-radius: var(--border-radius-medium); /* 조금 더 큰 radius */
+    color: var(--color-gray-600);
+  }
+
+  .nav-items a:hover,
+  .nav-items a:active {
+    background-color: var(--color-primary-500-bg);
+  }
+}

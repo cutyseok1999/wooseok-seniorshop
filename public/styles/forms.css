@@ -1,0 +1,43 @@
+form hr {
+  border-color: var(--color-gray-300);
+  margin: var(--space-6); /* margin 조절 */
+}
+
+label {
+  color: var(--color-gray-600);
+  font-size: 1.5rem; /* 글자 크기 조절 */
+  display: block;
+  margin-bottom: var(--space-4); /* margin 조절 */
+}
+
+input,
+textarea {
+  font: inherit;
+  font-size: 1.25rem; /* 폰트 크기 조절 */
+  padding: var(--space-4); /* 패딩 크기 조절 */
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--color-gray-300);
+  width: 90%;
+  background-color: var(--color-gray-50);
+}
+
+#image-upload-control {
+  display: flex;
+  align-items: center;
+}
+
+#image-upload-control input {
+  max-width: 15rem;
+  font-size: 1.25rem; /* 폰트 크기 조절 */
+  padding: var(--space-4); /* 패딩 크기 조절 */
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-300);
+}
+
+#image-upload-control img {
+  display: none;
+  width: 6rem; /* 이미지 크기 조절 */
+  height: 6rem; /* 이미지 크기 조절 */
+  object-fit: cover;
+  border-radius: var(--border-radius-medium);
+}

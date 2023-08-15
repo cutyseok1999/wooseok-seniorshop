@@ -1,0 +1,30 @@
+<%- include('../../shared/includes/head', { pageTitle: product.title }) %>
+<link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/cart-management.js" defer></script>
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main id="product-details">
+    <header>
+      <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+      <div id="product-info">
+        <h1><%= product.title %></h1>
+        <p><%= product.price %>원</p>
+        <!-- 수량 입력 박스 추가 -->
+        <label for="product-quantity">수량:</label>
+        <input type="number" id="product-quantity" name="quantity" min="1" value="1">
+
+        <!-- 장바구니에 담기 버튼 -->
+        <button class="btn" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">장바구니에 담기</button>
+
+        <% if (locals.isAuth) { %>
+        <!-- 바로 구매 버튼 추가 -->
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+        <button class="btn" id="buy-now" data-productid="<%= product.id %>">구매하기</button>
+        <% } %>
+      </div>
+    </header>
+    
+    <p id="product-description"><%= product.description %></p>
+  </main>
+<%- include('../../shared/includes/footer') %>

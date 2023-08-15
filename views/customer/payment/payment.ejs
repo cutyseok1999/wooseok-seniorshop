@@ -1,0 +1,59 @@
+<%- include('../../shared/includes/head', { pageTitle: '결제하기' }) %>
+<link rel="stylesheet" href="/styles/checkout.css">
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+
+  <main id="checkout">
+    <h1>결제하기</h1>
+
+    <!-- 주소 입력 폼 -->
+    <section class="checkout-section">
+      <h2>배송 주소</h2>
+      <form id="address-form">
+        <label for="name">이름:</label>
+        <input type="text" id="name" required>
+        
+        <label for="address">주소:</label>
+        <textarea id="address" required></textarea>
+        
+        <label for="phone">전화번호:</label>
+        <input type="tel" id="phone" required>
+      </form>
+    </section>
+
+    <!-- 결제 상세 -->
+    <section class="checkout-section">
+      <h2>결제 상세</h2>
+      <ul id="payment-details">
+        <% for (const item of locals.cart.items) { %>
+          <li>
+            <span class="product-title"><%= item.product.title %></span>
+            <span class="product-quantity"><%= item.quantity %>개</span>
+            <span class="product-price"><%= item.product.price %>원</span>
+          </li>
+        <% } %>
+        <li class="total">
+          총 금액: <%= locals.cart.totalPrice %>원
+        </li>
+      </ul>
+    </section>
+
+    <!-- 결제 방법 선택 -->
+    <section class="checkout-section">
+      <h2>결제 방법</h2>
+      <select id="payment-method">
+        <option value="card">카드 결제</option>
+        <option value="bank">계좌 이체</option>
+        <option value="paypal">페이팔</option>
+      </select>
+    </section>
+
+    <!-- 결제 버튼 -->
+    <form action="/orders" method="POST">
+      <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+      <button class="buy-btn" data-productid="<%= product.id %>">구매하기</button>
+    </form>
+  </main>
+
+  <%- include('../../shared/includes/footer') %>

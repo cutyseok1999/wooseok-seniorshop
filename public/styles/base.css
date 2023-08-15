@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px; /* 기본 폰트 크기를 18px로 키웁니다. 원하는 크기로 조절 가능합니다. */
+  font-family: "Montserrat", "sans-serif";
+
+  --color-gray-50: rgb(255, 255, 255); /* 배경색 */
+  --color-gray-100: rgb(230, 230, 230);
+  --color-gray-300: rgb(153, 153, 153);
+  --color-gray-400: rgb(102, 102, 102);
+  --color-gray-500: rgb(51, 51, 51);
+  --color-gray-600: rgb(0, 0, 0); /* 글씨색 */
+  --color-gray-700: rgb(0, 0, 0);
+
+  --color-primary-50: rgb(230, 240, 255);
+  --color-primary-100: rgb(200, 220, 255);
+  --color-primary-200: rgb(160, 190, 255);
+  --color-primary-400: rgb(100, 140, 255);
+  --color-primary-500: rgb(50, 90, 255);
+  --color-primary-700: rgb(20, 60, 210);
+  --color-primary-200-contrast: rgb(0, 0, 0);
+  --color-primary-500-contrast: rgb(255, 255, 255);
+
+  --color-error-100: rgb(255, 200, 200);
+  --color-error-500: rgb(204, 0, 0);
+
+  --color-primary-500-bg: rgb(102, 102, 102);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+
+  --border-radius-small: 8px; /* 둥근 모서리 크기 조절 */
+  --border-radius-medium: 12px;
+
+  --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--color-gray-50); /* 배경색을 흰색으로 변경 */
+  color: var(--color-gray-600); /* 글씨색을 검은색으로 변경 */
+  margin: 0;
+  line-height: 1.6; /* 줄 간격을 조절하여 읽기 쉽게 만듭니다. */
+}
+
+main {
+  width: 90%;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary-400);
+}
+
+.btn {
+  cursor: pointer;
+  font: inherit;
+  padding: var(--space-4) var(--space-8);
+  background-color: var(--color-primary-500);
+  color: var(--color-primary-500-contrast);
+  border: 1px solid var(--color-primary-500);
+  border-radius: var(--border-radius-small);
+}
+
+.btn:hover,
+.btn:active {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+.btn-alt {
+  background-color: transparent;
+  color: var(--color-primary-500);
+}
+
+.btn-alt:hover,
+.btn-alt:active {
+  background-color: var(--color-primary-500-bg);
+}
+
+.alert {
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-error-100);
+  color: var(--color-error-500);
+  padding: var(--space-4);
+}
+
+.alert h2 {
+  font-size: 1.5rem; /* 제목 크기를 조절 */
+  margin: var(--space-2) 0;
+  text-transform: uppercase;
+}
+
+.alert p {
+  margin: var(--space-2) 0;
+}
+
+.badge {
+  margin-left: var(--space-2);
+  padding: 0.15rem var(--space-4);
+  border-radius: 10rem;
+  background-color: var(--color-primary-500);
+  color: var(--color-primary-500-contrast);
+}

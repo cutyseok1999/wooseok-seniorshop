@@ -1,0 +1,69 @@
+<form
+  action="<%= submitPath %>?_csrf=<%= locals.csrfToken %>"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <p>
+    <label for="title">제목</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      value="<%= product.title %>"
+      required
+    />
+  </p>
+
+  <div id="image-upload-control">
+    <p>
+      <label for="image">제품 사진</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        accept="image/png,image/jpg"
+        <% if(imageRequired) { %> 
+          required
+        <% } %>
+      >
+    </p>
+
+    <img src="" alt="Selected image." />
+  </div>
+
+  <!-- 분류 추가 -->
+  <p>
+    <label for="summary">분류</label>
+    <select id="summary" name="summary" required>
+      <option value="건강" <%= product.summary === '건강' ? 'selected' : '' %>>건강</option>
+      <option value="여가" <%= product.summary === '여가' ? 'selected' : '' %>>여가</option>
+      <option value="식품" <%= product.summary === '식품' ? 'selected' : '' %>>식품</option>
+      <option value="생활용품" <%= product.summary === '생활용품' ? 'selected' : '' %>>생활용품</option>
+      <option value="패션" <%= product.summary === '패션' ? 'selected' : '' %>>패션</option>
+      <option value="기타" <%= product.summary === '기타' ? 'selected' : '' %>>기타</option>
+    </select>
+  </p>
+
+  <p>
+    <label for="price">가격</label>
+    <input
+      type="number"
+      id="price"
+      name="price"
+      value="<%= product.price %>"
+      min="0"
+      step="10"
+      required
+    />
+  </p>
+
+  <p>
+    <label for="description">제품 설명</label>
+    <textarea id="description" name="description" rows="7" required><%= product.description %></textarea>
+  </p>
+
+  <p>
+    <button type="reset" class="btn btn-alt">초기화</button>
+    <button class="btn">저장</button>
+  </p>
+</form>

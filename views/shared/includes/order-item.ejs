@@ -1,0 +1,44 @@
+<article class="order-item">
+  <header class="order-summary">
+    <h2><span class="order-item-price"><%= order.productData.totalPrice.toFixed(0) %>원</span> - <%= order.formattedDate %></h2>
+    <p><span class="badge"><%= order.status.toUpperCase() %></span></p>
+  </header>
+
+  <section class="order-details">
+    <% if (locals.isAdmin) { %>
+      <address>
+        <p><a href="mailto:<%= order.userData.email %>"><%= order.userData.name %></a></p>
+        <p><%= order.userData.address.street %> (<%= order.userData.address.postalCode %> <%= order.userData.address.city %>)</p>
+      </address>
+    <% } %>
+    <ul>
+      <% for (const item of order.productData.items) { %>
+        <li><%= item.product.title %> - <%= item.totalPrice.toFixed(0) %>원 (<%= item.product.price.toFixed(0) %> x <%= item.quantity %>원)</li>
+      <% } %>
+    </ul>
+  </section>
+
+  <% if (locals.isAdmin) { %>
+    <section class="order-actions">
+      <form>
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+        <input type="hidden" name="orderid" value="<%= order.id %>">
+        <select name="status">
+          <option value="주문완료" <% if (order.status === '주문완료') { %>selected<% } %>>주문완료</option>
+          <option value="배송완료" <% if (order.status === '배송완료') { %>selected<% } %>>배송완료</option>
+          <option value="취소됨" <% if (order.status === '취소됨') { %>selected<% } %>>취소됨</option>
+        </select>
+        <button class="btn btn-alt">업데이트</button>
+      </form>
+    </section>
+  <% } else { %>
+    <!-- 사용자용 주문 취소 버튼 추가 -->
+    <section class="order-actions-user">
+      <form id="cancel-order-form">
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+        <input type="hidden" name="orderid" value="<%= order.id %>">
+        <button class="btn btn-danger" id="cancel-order-btn">주문 취소</button>
+      </form>
+    </section>
+  <% } %>
+</article>

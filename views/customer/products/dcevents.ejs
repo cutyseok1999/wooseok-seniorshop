@@ -1,0 +1,44 @@
+<%- include('../../shared/includes/head', { pageTitle: '모든 제품' }) %>
+<link rel="stylesheet" href="/styles/products.css">
+<script src="/scripts/product-management.js"></script>
+
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <div class="clearfix">
+      <!-- 탭 추가 -->
+      <div class="category-tabs">
+        <button class="category-tab active" data-category="모든 제품">모든 제품</button>
+        <button class="category-tab" data-category="건강">건강</button>
+        <button class="category-tab" data-category="여가">여가</button>
+        <button class="category-tab" data-category="식품">식품</button>
+        <button class="category-tab" data-category="생활용품">생활용품</button>
+        <button class="category-tab" data-category="패션">패션</button>
+        <button class="category-tab" data-category="기타">기타</button>
+      </div>
+
+      <!-- 검색창 및 버튼 추가 -->
+      <div class="search-section">
+        <input type="text" id="productSearch" class="product-search-input" placeholder="제품 검색...">
+        <button id="btn-search" class="product-search-btn">검색</button>
+        <button id="btn-speak" class="product-search-btn">음성</button>
+      </div>
+
+    </div>
+    
+    <% if (!search) { %>
+      <h1><%= category %></h1>
+    <% } else { %>
+      <h1>'<%= search %>' 검색결과</h1>
+    <% } %>
+    <ul id="products-grid">
+      <% for (const product of products) { %>
+        <li>
+          <%- include('../../shared/includes/product-item', { product: product }) %>
+        </li>
+      <% } %>
+    </ul>
+
+  </main>
+<%- include('../../shared/includes/footer') %>

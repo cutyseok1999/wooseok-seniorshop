@@ -1,0 +1,29 @@
+<%- include('../../shared/includes/head', { pageTitle: '장바구니' }) %>
+<link rel="stylesheet" href="/styles/cart.css">
+<script src="/scripts/cart-item-management.js" defer></script>
+</head>
+<body>
+  <%- include('../../shared/includes/header') %>
+  <main>
+    <h1>장바구니</h1>
+    <ul id="cart-items">
+      <% for (const cartItem of locals.cart.items) { %>
+        <li>
+          <%- include('includes/cart-item', { item: cartItem }) %>
+        </li>
+      <% } %>
+    </ul>
+    <div id="cart-total">
+      <p>합계: <span id="cart-total-price"><%= locals.cart.totalPrice.toFixed(0) %></span>원</p>
+
+      <% if (locals.isAuth) { %>
+        <form action="/orders" method="POST">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+          <button class="btn">구매하기</button>
+        </form>
+      <% } else { %>
+        <p id="cart-total-fallback">제품을 구매하기 위해서는 로그인해야 합니다!</p>
+      <% } %>
+    </div>
+  </main>
+<%- include('../../shared/includes/footer') %>

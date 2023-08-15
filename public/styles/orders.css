@@ -1,0 +1,63 @@
+.order-item {
+  background-color: var(--color-gray-50);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-6); /* 패딩 크기 조절 */
+  margin: var(--space-6) 0; /* 마진 크기 조절 */
+}
+
+.order-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6); /* 간격 조절 */
+  margin-bottom: var(--space-4); /* 마진 크기 조절 */
+  color: var(--color-gray-600);
+}
+
+.order-summary h2,
+.order-summary p {
+  font-size: 1.5rem; /* 폰트 크기 조절 */
+  font-weight: normal;
+  margin: 0;
+  color: var(--color-gray-600);
+}
+
+.order-item-price {
+  color: var(--color-gray-600);
+  font-size: 1.25rem; /* 폰트 크기 조절 */
+}
+
+.order-item .status {
+  display: flex;
+  min-width: 15rem;
+}
+
+.order-item .status .badge {
+  margin-right: var(--space-6); /* 마진 크기 조절 */
+}
+
+.order-details ul {
+  list-style: square;
+  margin-left: var(--space-10); /* 마진 크기 조절 */
+}
+
+.order-details li {
+  margin-bottom: var(--space-4); /* 마진 크기 조절 */
+  color: var(--color-gray-600);
+  font-size: 1.25rem; /* 폰트 크기 조절 */
+}
+
+.order-item select {
+  font: inherit;
+  padding: var(--space-4); /* 패딩 크기 조절 */
+  border-radius: var(--border-radius-medium); /* 조금 더 큰 radius */
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-50);
+}
+
+@media (min-width: 48rem) {
+  .order-summary {
+    flex-direction: row;
+  }
+}
